@@ -46,6 +46,7 @@ class Letter(db.Model):
 
         return f'<Letter letter_id={self.letter_id} letter_title={self.letter_title}>'
 
+# This is an association table. 
 class Favorite(db.Model):
     """ A favorite."""
 

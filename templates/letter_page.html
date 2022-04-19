@@ -2,8 +2,35 @@
 {% block title %}Write A Letter{% endblock %}
 
 {% block body %}
-  <h1>Write a letter to the future</h1>
+  <h1>A letter to the future</h1>
 
-  <h2></h2>
+  <h2>If you are wondering how to start writing your letter, we have some ideas for you:</h2>
+  <ul>
+      <li>Self-reflection</li>
+      <li>Time-machine</li>
+      <li>Reminders</li>
+      <li>Family</li>
+      <li>Career</li>
+  </ul>
+  <form action="/write_letter" method="POST">
+      <p>
+          <label for="start-letter"><b>Write your letter:</b></label>
+          <br>
+          <textarea name="letter" id="letter" rows="20" cols="50"></textarea>
+      </p>
+      <p>
+          Title <input type="text" name="title">
+      </p>
+      <p>
+          Creation Date <input type="date" name="creation-date">
+      </p>
+      <p>
+          Delivery Date <input type="date" name="delivery-date">
+      </p>
+      <p>
+          <input type="submit">
+      </p>
+  </form>
+
 
   {% endblock %}
