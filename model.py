@@ -16,7 +16,7 @@ class User(db.Model):
     password = db.Column(db.String, unique=True)
 
     letters = db.relationship("Letter", back_populates="user")
-    favorites = db.relationship("Letter", secondary="favorites", backref="user")
+    favorites = db.relationship("Letter", secondary="favorites", back_populates="user")
     
     def __repr__(self):
         """Show info about user."""

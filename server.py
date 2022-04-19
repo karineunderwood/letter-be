@@ -4,7 +4,7 @@ from flask import (Flask, render_template, request, flash, session,
                   redirect)
 
 from model import connect_to_db, db
-# import crud
+import crud
 
 from jinja2 import StrictUndefined
 
@@ -26,11 +26,21 @@ def homepage():
 def create_an_account():
     """Create a user account."""
 
-    # email = request.form.get("email")
-    # password = request.form.get("password")
+    fname = request.form.get("fname")
+    lname = request.form.get("lname")
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    user = crud.create_user_account(fname, lname, email, password)
+
+    return render_template("letter_page.html", user=user)
+    # return "This is a test"
+
+
+
 
     
-    return "What to do next?"
+    
     
 
 
