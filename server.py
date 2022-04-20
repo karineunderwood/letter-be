@@ -33,8 +33,24 @@ def create_an_account():
 
     user = crud.create_user_account(fname, lname, email, password)
 
-    return render_template("letter_page.html", user=user)
-    # return "This is a test"
+    return render_template("users_profile.html")
+    
+@app.route("/write_letter", methods=["POST"])
+def create_a_letter():
+    """Create a letter."""
+
+    letter_body = request.form.get("letter_body")
+    letter_title = request.form.get("letter_title")
+    creation_date = request.form.get("creation_date")
+    delivery_date = request.form.get("delivery_date")
+    # print(letter_body)
+    # print(letter_title)
+    # print(creation_date)
+    # print(delivery_date)
+
+    return render_template("users_profile.html")
+# may have to redirect to the users profile when I create it.
+
 
 
 
@@ -42,9 +58,7 @@ def create_an_account():
     
     
     
-
-
-
 
 if __name__ == "__main__":
+    connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)

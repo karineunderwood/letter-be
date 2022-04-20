@@ -4,7 +4,7 @@
 {% block body %}
   <h1>Welcome!</h1>
 
-  <h2>New here? Create an account</h2>
+  <h2>Create an account</h2>
   <form action="/registration" method="POST">
       <p>
         First Name <input type="text" name="fname">
@@ -26,6 +26,21 @@
           <input type="submit">
       </p>
   </form>
+
+  <h2>Log In</h2>
+  <form action="/login" method="POST">
+      <p>
+          Email <input type="text" name="email">
+      </p>
+      <p>
+          Password <input type="'text" name="password">
+      </p>
+      <p>
+          <input type="submit">
+      </p>
+  </form>
+
+
 
 
 {% endblock %}
