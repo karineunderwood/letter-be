@@ -23,18 +23,47 @@ def homepage():
 # create a route to process form data and add it to my database
 
 @app.route("/registration", methods=["POST"])
-def create_an_account():
+def create_user():
     """Create a user account."""
 
     fname = request.form.get("fname")
-    lname = request.form.get("lname")
+    lname = request.form.get("last_name")
     email = request.form.get("email")
     password = request.form.get("password")
 
-    user = crud.create_user_account(fname, lname, email, password)
-
-    return render_template("users_profile.html")
+    user = crud.create_user(fname, lname, email, password)
     
+    db.session.add(user)
+    db.session.commit()
+
+    return render_template("letter_page.html")
+    # return render_template("users_profile.html")
+
+
+@app.route("/login", methods=["POST"])
+def process_login():
+    """Process user login"""
+
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    user = crud.get_user_by_email(email)
+    # check if email and password are correct
+    # if it is store the user's email in session
+    if not user or user.password != password:
+        flash("The email or password you enter is not valid. Please try again.")
+    else:
+        session["user_email"] = user.email
+        flash(f'Welcome back, {user.email}!')
+
+    return redirect('users_profile.html')
+
+
+
+
+
+
+
 @app.route("/write_letter", methods=["POST"])
 def create_a_letter():
     """Create a letter."""

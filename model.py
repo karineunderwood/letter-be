@@ -13,7 +13,7 @@ class User(db.Model):
     fname = db.Column(db.String)
     lname = db.Column(db.String)
     email = db.Column(db.String, unique=True)
-    password = db.Column(db.String, unique=True)
+    password = db.Column(db.String)
 
     letters = db.relationship("Letter", back_populates="user")
     favorites = db.relationship("Letter", secondary="favorites", back_populates="user")

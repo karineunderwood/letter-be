@@ -8,12 +8,20 @@
 from model import db, User, Letter, Favorite, connect_to_db
 
 
-def create_user_account(fname, lname, email, password):
+def create_user(fname, lname, email, password):
     """Create user's account."""
 
     user_account = User(fname=fname, lname=lname, email=email, password=password)
+    
 
     return user_account
+
+def get_user_by_email(email):
+    """Return a user by email."""
+
+    return User.query.filter(User.email == email).first()
+
+
 
 def create_letter_for_user(letter_title, letter_body, creation_date, delivery_date):
     """Create letter for users."""
