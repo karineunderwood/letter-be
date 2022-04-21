@@ -31,12 +31,21 @@ def create_user():
     email = request.form.get("email")
     password = request.form.get("password")
 
-    user = crud.create_user(fname, lname, email, password)
+     
     
-    db.session.add(user)
-    db.session.commit()
+    # flash message if user cannot create 
+    # an account with that email or if the user can.
+    
+    user = crud.get_user_by_email(email)
+    if user:
+        flash("You cannot create an account with that email. Please try again.")
+    else:
+        user = crud.create_user(fname, lname, email, password)
+        db.session.add(user)
+        db.session.commit()
+        flash("Account created succesfully! Please log in.")
 
-    return render_template("letter_page.html")
+    return redirect("/")
     # return render_template("users_profile.html")
 
 
@@ -55,28 +64,30 @@ def process_login():
     else:
         session["user_email"] = user.email
         flash(f'Welcome back, {user.email}!')
-
-    return redirect('users_profile.html')
-
-
+    # don't forget to change the return
+    return render_template('letter_page.html')
 
 
 
-
-
-@app.route("/write_letter", methods=["POST"])
+@app.route("/letter", methods=["POST"])
 def create_a_letter():
     """Create a letter."""
+
+    logged_in_email = session.get("user_email")
 
     letter_body = request.form.get("letter_body")
     letter_title = request.form.get("letter_title")
     creation_date = request.form.get("creation_date")
     delivery_date = request.form.get("delivery_date")
-    # print(letter_body)
-    # print(letter_title)
-    # print(creation_date)
-    # print(delivery_date)
-
+    
+    if logged_in_email is None:
+        flash("You must log in to write a letter.")
+    else:
+        user_letter = crud.create_letter_for_user(letter_title, letter_body, creation_date, delivery_date)
+        db.session.add(user_letter)
+        db.session.commit()
+    
+    # return render_template("letter_page.html")
     return render_template("users_profile.html")
 # may have to redirect to the users profile when I create it.
 

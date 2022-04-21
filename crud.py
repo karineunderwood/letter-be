@@ -26,9 +26,13 @@ def get_user_by_email(email):
 def create_letter_for_user(letter_title, letter_body, creation_date, delivery_date):
     """Create letter for users."""
 
-    user_letter = Letter(letter_title=letter_title, letter_body=letter_body, creation_date=creation_date, delivery_date=delivery_date)
+    letter = Letter(
+        letter_title=letter_title,
+        letter_body=letter_body,
+        creation_date=creation_date,
+        delivery_date=delivery_date)
 
-    return user_letter    
+    return letter    
 
 
 
