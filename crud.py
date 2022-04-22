@@ -34,7 +34,10 @@ def create_letter_for_user(letter_title, letter_body, creation_date, delivery_da
 
     return letter    
 
+def get_letter_by_user_id(user_id):
+    """Return a letter by user's id."""
 
+    return Letter.query.get(user_id)
 
 
 

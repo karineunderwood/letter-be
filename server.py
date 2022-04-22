@@ -27,7 +27,7 @@ def create_user():
     """Create a user account."""
 
     fname = request.form.get("fname")
-    lname = request.form.get("last_name")
+    lname = request.form.get("lname")
     email = request.form.get("email")
     password = request.form.get("password")
 
@@ -61,11 +61,30 @@ def process_login():
     # if it is store the user's email in session
     if not user or user.password != password:
         flash("The email or password you enter is not valid. Please try again.")
+        return render_template("homepage.html")
     else:
         session["user_email"] = user.email
         flash(f'Welcome back, {user.email}!')
-    # don't forget to change the return
-    return render_template('letter_page.html')
+        # don't forget to change the return
+        return render_template('users_profile.html')
+
+
+@app.route("/user_letter/<user_id>")
+def show_users_letter(user_id):
+    """Show all letters from user."""
+
+    # letters_user = crud.get_letter_by_user_id(user_id)
+
+    letters = crud.User.query.options(db.joinedload("letters")).filter_by(user_id=user_id)
+
+    letter_info = []
+
+    for letter in letters:
+        letter_info.append(letter.letters)
+    
+    return render_template('user_profile.html', letters=letters)
+
+    # return render_template("users_profile.html", letters_user=letters_user)
 
 
 
@@ -76,9 +95,9 @@ def create_a_letter():
     logged_in_email = session.get("user_email")
 
     letter_body = request.form.get("letter_body")
-    letter_title = request.form.get("letter_title")
-    creation_date = request.form.get("creation_date")
-    delivery_date = request.form.get("delivery_date")
+    letter_title = request.form.get("title")
+    creation_date = request.form.get("creation-date")
+    delivery_date = request.form.get("delivery-date")
     
     if logged_in_email is None:
         flash("You must log in to write a letter.")
@@ -86,10 +105,24 @@ def create_a_letter():
         user_letter = crud.create_letter_for_user(letter_title, letter_body, creation_date, delivery_date)
         db.session.add(user_letter)
         db.session.commit()
+        flash("Your letter was successfully created!")
     
-    # return render_template("letter_page.html")
     return render_template("users_profile.html")
-# may have to redirect to the users profile when I create it.
+
+
+@app.route("/display_letters")
+def show_letter():
+    """Write a letter."""
+
+    return render_template("letter_page.html")
+
+    
+
+
+
+
+
+
 
 
 
