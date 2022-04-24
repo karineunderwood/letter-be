@@ -21,25 +21,34 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
+def get_user_by_id(user_id):
 
+    return User.query.get(user_id)
 
-def create_letter_for_user(letter_title, letter_body, creation_date, delivery_date):
+def create_letter_for_user(letter_title, letter_body, creation_date, delivery_date, likes, read, publish, user_id):
     """Create letter for users."""
 
     letter = Letter(
         letter_title=letter_title,
         letter_body=letter_body,
         creation_date=creation_date,
-        delivery_date=delivery_date)
+        delivery_date=delivery_date, 
+        likes=likes,
+        read=read, 
+        publish=publish,
+        user_id=user_id)
 
     return letter    
 
-def get_letter_by_user_id(user_id):
-    """Return a letter by user's id."""
+def get_letter_by_id(letter_id):
+    """Return a letter by letter id."""
 
-    return Letter.query.get(user_id)
+    return Letter.query.get(letter_id)
 
+def get_all_letters_by_user_id(user_id):
+    """Return all letters from the user."""
 
+    return Letter.query.filter(Letter.user_id == user_id).all()
 
 
 
