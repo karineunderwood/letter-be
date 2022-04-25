@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
-{% block title %}Letter to Your Future Self Home{% endblock %}
+{% block title %} Letter to Your Future Self {% endblock %}
 
 {% block body %}
-  <h1>Welcome!</h1>
+  
+    
+  <h1>Hello and welcome to Letter Be!</h1> 
+  <pre><span class="inner-text" style="font-family:sans-serif; font-size: 25px;" > 
+  Have you ever thought that maybe a year from now your life could look entirely different?
+  We would like to provide you a chance to do something really powerful: <i>visualize a better future!</i>
+  This is a place where you can write a letter now and receive it in the future.
+  And receiving something special from the past will definitely make this experience memorable!
+  </span></pre>
 
-  <h2>Create an account</h2>
+  <h2>New here? Create an account</h2>
   <form action="/registration" method="POST">
       <p>
         First Name <input type="text" name="fname">

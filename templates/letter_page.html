@@ -2,23 +2,30 @@
 {% block title %}Write A Letter{% endblock %}
 
 {% block body %}
-  <h1>A letter to the future</h1>
+  <h1>Your exciting journey starts here!</h1>
 
   <h2>If you are wondering how to start writing your letter, we have some ideas for you:</h2>
-  <ul>
-      <li>Self-reflection</li>
-      <li>Time-machine</li>
-      <li>Reminders</li>
-      <li>Family</li>
-      <li>Career</li>
-  </ul>
+    <h3>Remind Yourself That The Little Things Matter</h3>
+    <cite>We are always worried about the big events in your lives, 
+            but what about a cup of coffee in the mornings, the smell of a new book,
+            or a small talk with your neighbor? These things will be nice to remember
+            when you receive the letter in the future. </cite>
+  
+    <h3>Next Birthday</h3>
+    <cite>Birthdays are so special. They remind us that we are growing older, although they 
+        symbolize how far we have come. They give everyone a day to feel special. 
+        and putting your wishes within a letter it is a nice to way to gift someone or yourself. </cite>
+    <h3>To Your Future Grandchild</h3>  
+    <cite>Tell them how the world looks like now and share your thoughts and advice about 
+          climate change in our lifetimes. </cite>
+    <br>
   <form action="/letter" method="POST">
       <p>
           <label for="start-letter"><b>Write your letter:</b></label>
           <br>
+          <br>
           <textarea name="letter_body" id="letter_body" rows="20" cols="50"></textarea>
       </p>
-      <p>
           Title <input type="text" name="title">
       </p>
       <p>

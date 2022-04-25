@@ -115,8 +115,8 @@ def display_letter(letter_id):
 
 
 
-@app.route("/display_letters")
-def show_letter():
+@app.route("/write_letter")
+def write_letters():
     """Write a letter."""
 
     return render_template("letter_page.html")
