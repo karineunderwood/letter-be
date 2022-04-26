@@ -109,20 +109,24 @@ def user_profile(user_id):
 
 #     return render_template("register.html")
 
-
+#####################################################
 # Create a route to process the form
-@app.route("/posto-form-data", methods=["POST"])
-def post_user_profile_pic():
-    """Process form data."""
+# I'm getting an error raise KeyError(key) from none 
+# KeyError: 'CLOUDINARY_KEY
+#####################################################
 
-    user_picture = request.files['my-file']
-    result = cloudinary.uploader.upload(user_picture,
-                                        api_key=CLOUDINARY_KEY,
-                                        api_secret=CLOUDINARY_SECRET,
-                                        cloud_name=CLOUD_NAME )
+# @app.route("/posto-form-data", methods=["POST"])
+# def post_user_profile_pic():
+#     """Process form data."""
 
-    img_url = result['secure_url']
-    return redirect("/", img_url=img_url)
+#     user_picture = request.files['my-file']
+#     result = cloudinary.uploader.upload(user_picture,
+#                                         api_key=CLOUDINARY_KEY,
+#                                         api_secret=CLOUDINARY_SECRET,
+#                                         cloud_name=CLOUD_NAME )
+
+#     img_url = result['secure_url']
+#     return redirect("/", img_url=img_url)
 
 @app.route("/letter", methods=["POST"])
 def create_a_letter():
