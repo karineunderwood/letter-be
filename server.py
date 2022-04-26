@@ -5,8 +5,13 @@ from flask import (Flask, render_template, request, flash, session,
 
 from model import connect_to_db, db
 import crud
-
 from jinja2 import StrictUndefined
+# import cloudinary.uploader
+# import os
+
+# CLOUDINARY_KEY = os.environ['CLOUDINARY_KEY']
+# CLOUDINARY_SECRET = os.environ['CLOUDINARY_SECRET']
+# CLOUD_NAME = "dnw3idclo"
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -15,9 +20,16 @@ app.jinja_env.undefined = StrictUndefined
 
 @app.route("/")
 def homepage():
-    """  """
+    """This is the homepage. """
 
     return render_template('homepage.html')
+
+@app.route("/registration")
+def show_registration_form():
+    """Show registration form."""
+
+    return render_template("register.html")
+
 
 
 @app.route("/registration", methods=["POST"])
@@ -40,7 +52,17 @@ def create_user():
         flash("Account created succesfully! Please log in.")
 
     return redirect("/")
+    # return render_template("register.html")
     
+
+
+@app.route("/login")
+def show_login_page():
+    """Show log in page."""
+
+    return render_template("login.html")
+
+
 
 @app.route("/login", methods=["POST"])
 def process_login():
@@ -69,6 +91,15 @@ def user_profile(user_id):
     user = crud.get_user_by_id(user_id)
 
     return render_template("users_profile.html", user=user)
+
+
+@app.route("/logout")
+def log_out():
+    """Allows user to log out."""
+    
+    session.clear()
+   
+    return redirect("/")
 
 
 @app.route("/letter", methods=["POST"])
@@ -134,6 +165,13 @@ def all_letters():
     letters = crud.get_all_letters_by_user_id(user.user_id)
 
     return render_template("all_letters.html", letters=letters)
+
+# @app.route("/show_form_img")
+# def show_form_image():
+#     """Show form."""
+
+#     return render_template("users_profile")
+
 
 
 
