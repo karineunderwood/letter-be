@@ -6,12 +6,12 @@ from flask import (Flask, render_template, request, flash, session,
 from model import connect_to_db, db
 import crud
 from jinja2 import StrictUndefined
-# import cloudinary.uploader
-# import os
+import os
+import cloudinary.uploader
 
-# CLOUDINARY_KEY = os.environ['CLOUDINARY_KEY']
-# CLOUDINARY_SECRET = os.environ['CLOUDINARY_SECRET']
-# CLOUD_NAME = "dnw3idclo"
+CLOUDINARY_KEY = os.environ['CLOUDINARY_KEY']
+CLOUDINARY_SECRET = os.environ['CLOUDINARY_SECRET']
+CLOUD_NAME = "dnw3idclo"
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -83,6 +83,14 @@ def process_login():
         
         return redirect(f"/user/{user.user_id}")
 
+@app.route("/logout")
+def log_out():
+    """Allows user to log out."""
+    
+    session.clear()
+   
+    return redirect("/")
+
 
 @app.route("/user/<user_id>")
 def user_profile(user_id):
@@ -93,14 +101,28 @@ def user_profile(user_id):
     return render_template("users_profile.html", user=user)
 
 
-@app.route("/logout")
-def log_out():
-    """Allows user to log out."""
-    
-    session.clear()
-   
-    return redirect("/")
 
+# Create a route to show the form
+# @app.route("/form-upload")
+# def show_form_upload():
+#     """Show upload form"""
+
+#     return render_template("register.html")
+
+
+# Create a route to process the form
+@app.route("/posto-form-data", methods=["POST"])
+def post_user_profile_pic():
+    """Process form data."""
+
+    user_picture = request.files['my-file']
+    result = cloudinary.uploader.upload(user_picture,
+                                        api_key=CLOUDINARY_KEY,
+                                        api_secret=CLOUDINARY_SECRET,
+                                        cloud_name=CLOUD_NAME )
+
+    img_url = result['secure_url']
+    return redirect("/", img_url=img_url)
 
 @app.route("/letter", methods=["POST"])
 def create_a_letter():
