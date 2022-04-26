@@ -1,7 +1,8 @@
 """Server for letters app."""
 
-from flask import (Flask, render_template, request, flash, session, 
-                  redirect)
+from flask import (Flask, render_template, request, flash, 
+                                        session, redirect)
+                  
 
 from model import connect_to_db, db
 import crud
@@ -24,12 +25,12 @@ def homepage():
 
     return render_template('homepage.html')
 
+
 @app.route("/registration")
 def show_registration_form():
     """Show registration form."""
 
     return render_template("register.html")
-
 
 
 @app.route("/registration", methods=["POST"])
@@ -40,28 +41,32 @@ def create_user():
     lname = request.form.get("lname")
     email = request.form.get("email")
     password = request.form.get("password")
-
-     
+    photo = request.files['my-file']
+    
+    response= send_user_profile_pic(photo)
+    
+    if 'secure_url' in response:
+        photo_url = response['secure_url']
+    else:
+        photo_url = ""
+    
     user = crud.get_user_by_email(email)
     if user:
         flash("You cannot create an account with that email. Please try again.")
     else:
-        user = crud.create_user(fname, lname, email, password)
+        user = crud.create_user(fname=fname, lname=lname, email=email, password=password, photo=photo_url)
         db.session.add(user)
         db.session.commit()
         flash("Account created succesfully! Please log in.")
 
     return redirect("/")
-    # return render_template("register.html")
     
-
-
+    
 @app.route("/login")
 def show_login_page():
     """Show log in page."""
 
     return render_template("login.html")
-
 
 
 @app.route("/login", methods=["POST"])
@@ -83,6 +88,7 @@ def process_login():
         
         return redirect(f"/user/{user.user_id}")
 
+
 @app.route("/logout")
 def log_out():
     """Allows user to log out."""
@@ -101,32 +107,15 @@ def user_profile(user_id):
     return render_template("users_profile.html", user=user)
 
 
+def send_user_profile_pic(photo):
+    """Process form data."""
 
-# Create a route to show the form
-# @app.route("/form-upload")
-# def show_form_upload():
-#     """Show upload form"""
+    result = cloudinary.uploader.upload(photo,
+                                        api_key=CLOUDINARY_KEY,
+                                        api_secret=CLOUDINARY_SECRET,
+                                        cloud_name=CLOUD_NAME )
+    return result
 
-#     return render_template("register.html")
-
-#####################################################
-# Create a route to process the form
-# I'm getting an error raise KeyError(key) from none 
-# KeyError: 'CLOUDINARY_KEY
-#####################################################
-
-# @app.route("/posto-form-data", methods=["POST"])
-# def post_user_profile_pic():
-#     """Process form data."""
-
-#     user_picture = request.files['my-file']
-#     result = cloudinary.uploader.upload(user_picture,
-#                                         api_key=CLOUDINARY_KEY,
-#                                         api_secret=CLOUDINARY_SECRET,
-#                                         cloud_name=CLOUD_NAME )
-
-#     img_url = result['secure_url']
-#     return redirect("/", img_url=img_url)
 
 @app.route("/letter", methods=["POST"])
 def create_a_letter():
@@ -192,11 +181,16 @@ def all_letters():
 
     return render_template("all_letters.html", letters=letters)
 
-# @app.route("/show_form_img")
-# def show_form_image():
-#     """Show form."""
 
-#     return render_template("users_profile")
+def send_user_profile_pic(photo):
+    """Process form data."""
+
+    result = cloudinary.uploader.upload(photo,
+                                        api_key=CLOUDINARY_KEY,
+                                        api_secret=CLOUDINARY_SECRET,
+                                        cloud_name=CLOUD_NAME )
+    return result
+
 
 
 

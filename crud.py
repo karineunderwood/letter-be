@@ -8,7 +8,7 @@
 from model import db, User, Letter, Favorite, connect_to_db
 
 
-def create_user(fname, lname, email, password):
+def create_user(fname, lname, email, password, photo):
     """Create user's account."""
 
     user_account = User(fname=fname, lname=lname, email=email, password=password, photo=photo)
