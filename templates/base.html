@@ -12,6 +12,7 @@
     {% block head %}{% endblock %}
 </head>
 <body>
+   
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">Letter Be</a>
@@ -20,22 +21,39 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+              
+            {% if 'user_email' in session %}
+              
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Read Letters</a>
+                <a class="nav-link active" aria-current="page" href="/write_letter">Write Letter</a>
               </li>
+              
               <li class="nav-item">
-                <a class="nav-link" href="/registration">Register</a>
+                <a class="nav-link" href="/">My Page</a>
               </li>
+              
               <li class="nav-item">
-                <a class="nav-link" href="/login">Log In</a>
+                <a class="nav-link" href="/">Read Public Letters</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/logout">Log Out</a>
               </li>
-            </ul>
+
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Log In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/registration">Register</a>
+              </li>
+            
+            {% endif %} 
+          </ul>
           </div>
         </div>
       </nav>
+     
+      
     {% with messages = get_flashed_messages() %} 
       {% for msg in messages %}     
         <p class="flash-msg">

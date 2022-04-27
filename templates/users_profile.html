@@ -3,9 +3,9 @@
 
 {% block body %}
 
-<h2>{{ user.fname }}, what would you like to do?</h2>
-    <img src="{{ user.photo }}" width="400" height="500">
-      <br>
+<h2>{{ user.fname }}</h2><br>
+    <img src="{{ user.photo }}" style="border-radius: 50%;" width="300" height="300"/>
+      <br><br>
     <a href="/write_letter">Write a letter</a>
       <br>
     <a href="/all_letters">Your Letters</a>

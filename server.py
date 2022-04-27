@@ -103,8 +103,20 @@ def user_profile(user_id):
     """Display user profile for currently logged in user. """
 
     user = crud.get_user_by_id(user_id)
-
+   
     return render_template("users_profile.html", user=user)
+
+# @app.route("/user/<user_id>")
+# def user_profile_navbar(user_id):
+#     """ This is just a text."""
+
+#     
+
+# #     if user:
+#       user = crud.get_user_by_id(user_id)
+#     if user:
+#         return redirect(f"/user/{user_id}")
+#     else:
 
 
 def send_user_profile_pic(photo):
@@ -165,10 +177,10 @@ def display_letter(letter_id):
 def write_letters():
     """Write a letter."""
 
+    
     return render_template("letter_page.html")
 
     
-
 @app.route("/all_letters")
 def all_letters():
     """Return all letters."""
@@ -181,6 +193,7 @@ def all_letters():
 
     return render_template("all_letters.html", letters=letters)
 
+#  Helper function for my cloudinary request
 
 def send_user_profile_pic(photo):
     """Process form data."""
