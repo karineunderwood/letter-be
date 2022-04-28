@@ -25,15 +25,18 @@
             {% if 'user_email' in session %}
               
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/write_letter">Write Letter</a>
+                <a class="nav-link active" aria-current="page" href="/user/{{ session['user_id'] }}">Profile</a>
+              </li>
+             
+              <li class="nav-item">
+                <a class="nav-link" href="/write_letter">Write Letter</a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="/">My Page</a>
+                <a class="nav-link" href="/users_letters">Past Letters</a>
               </li>
-              
               <li class="nav-item">
-                <a class="nav-link" href="/">Read Public Letters</a>
+                <a class="nav-link" href="/public_letters">Public Letters</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/logout">Log Out</a>

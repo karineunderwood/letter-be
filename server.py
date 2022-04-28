@@ -84,6 +84,7 @@ def process_login():
         return redirect("/")
     else:
         session["user_email"] = user.email
+        session["user_id"] = user.user_id
         flash(f'Welcome back, {user.email}!')
         
         return redirect(f"/user/{user.user_id}")
@@ -106,29 +107,7 @@ def user_profile(user_id):
    
     return render_template("users_profile.html", user=user)
 
-# @app.route("/user/<user_id>")
-# def user_profile_navbar(user_id):
-#     """ This is just a text."""
-
-#     
-
-# #     if user:
-#       user = crud.get_user_by_id(user_id)
-#     if user:
-#         return redirect(f"/user/{user_id}")
-#     else:
-
-
-def send_user_profile_pic(photo):
-    """Process form data."""
-
-    result = cloudinary.uploader.upload(photo,
-                                        api_key=CLOUDINARY_KEY,
-                                        api_secret=CLOUDINARY_SECRET,
-                                        cloud_name=CLOUD_NAME )
-    return result
-
-
+    
 @app.route("/letter", methods=["POST"])
 def create_a_letter():
     """Create a letter."""
@@ -140,6 +119,14 @@ def create_a_letter():
     letter_title = request.form.get("title")
     creation_date = request.form.get("creation-date")
     delivery_date = request.form.get("delivery-date")
+    publish = request.form.get("publish")
+    
+    
+    if publish == "YES":
+        publish = True
+    elif publish == "NO":
+        publish = False
+
     
     if user is None:
         flash("You must log in to write a letter.")
@@ -153,7 +140,7 @@ def create_a_letter():
                         delivery_date=delivery_date, 
                         likes=0, 
                         read=False, 
-                        publish=False, 
+                        publish=publish, 
                         user_id=user.user_id)  #user is the user object from line 79, user_id is a column in your users table
                        
         
@@ -171,7 +158,12 @@ def display_letter(letter_id):
 
     return render_template("letter.html", letter=letter)
 
+@app.route("/public_letters")
+def display_all_public_letters():
+    """Display all published letters."""
 
+    published = crud.get_published_letter()
+    return render_template("public_letters.html", published=published)
 
 @app.route("/write_letter")
 def write_letters():
@@ -181,9 +173,9 @@ def write_letters():
     return render_template("letter_page.html")
 
     
-@app.route("/all_letters")
-def all_letters():
-    """Return all letters."""
+@app.route("/users_letters")
+def users_letters():
+    """Return all letters from user."""
 
     logged_in_email = session.get("user_email") 
     user = crud.get_user_by_email(logged_in_email)
@@ -191,7 +183,12 @@ def all_letters():
 
     letters = crud.get_all_letters_by_user_id(user.user_id)
 
-    return render_template("all_letters.html", letters=letters)
+    return render_template("users_letters.html", letters=letters)
+
+
+
+
+
 
 #  Helper function for my cloudinary request
 
