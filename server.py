@@ -163,7 +163,25 @@ def display_all_public_letters():
     """Display all published letters."""
 
     published = crud.get_published_letter()
+
+
     return render_template("public_letters.html", published=published)
+
+@app.route("/add_like", methods=["POST"])
+def add_like():
+    """Enable user to like the letters."""
+
+    
+    liked_letter_id = request.form.get("like-letter")
+    
+
+    liked_letter = crud.get_letter_by_id(liked_letter_id) #get letter object by letter id
+    liked_letter.likes = liked_letter.likes + 1 #updating the likes column for that letter object to add 1
+
+    db.session.commit()
+
+    return redirect("/public_letters")
+
 
 @app.route("/write_letter")
 def write_letters():
@@ -202,7 +220,10 @@ def send_user_profile_pic(photo):
     return result
 
 
-
+# 
+# 
+# 
+# 
 
 
 

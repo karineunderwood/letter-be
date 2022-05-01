@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Public Letters {% endblock %}
+
+{% block body %}
+
+<h1> All public letters </h1>
+
+{% for public in published %}
+<br>
+
+    <p>Title: {{ public.letter_title }} </p>
+    <cite>{{ public.letter_body }}</cite>
+    <br>
+    <br>
+    <p>Creation Date: {{ public.creation_date }}</p>
+    <p>
+        Likes: <span id="diplay">{{ public.likes }}</span>
+    </p>
+    <form action="/add_like" method="POST" id="like-form-{{ public.letter_id }}">
+        <input type="text" name="like-letter" value="{{ public.letter_id }}" hidden >
+        <input type="submit" id="likes" value="Like">
+    </form>
+
+{% endfor %}
+
+
+
+{% endblock %}

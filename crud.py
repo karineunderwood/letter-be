@@ -53,7 +53,7 @@ def get_all_letters_by_user_id(user_id):
 def get_published_letter():
     """Return all published letters."""
 
-    return Letter.query.filter(Letter.publish == True).all()
+    return Letter.query.filter(Letter.publish == True).order_by(Letter.letter_id).all()
 
 
 
