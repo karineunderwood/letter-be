@@ -2,7 +2,7 @@
 
 from flask import (Flask, render_template, request, flash, 
                                         session, redirect)
-                  
+import random                  
 
 from model import connect_to_db, db
 import crud
@@ -204,7 +204,22 @@ def users_letters():
     return render_template("users_letters.html", letters=letters)
 
 
+@app.route("/show_affirmations")
+def show_affirmation_quotes():
+    """Show to the user affirmation quotes for the day."""
 
+    affirmations = [
+        "Instead of worrying about what you cannot control, shift your energy to what you can create. - Roy T. Bennett, The Light in the Heart",
+        "I deserve the best, and I accept it now. All my needs and desires are met before I even ask. - Louise Hay",
+        "I am surrounded by love. - Louise Hay",
+        "I am one with the very power that created me. - Louise Hay",
+        "There is no path to happiness; Happiness is the path. - Buddha",
+        "Happiness is a warm puppy. - Charles M. Schulz",
+        "You are loved just for being who you are, just for existing. -Ram Dass",
+        "the perfect moment is this one. - Jon Kabat-Zinn"
+         ]
+
+    return random.choice(affirmations)
 
 
 

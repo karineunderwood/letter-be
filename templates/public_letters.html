@@ -18,7 +18,7 @@
     </p>
     <form action="/add_like" method="POST" id="like-form-{{ public.letter_id }}">
         <input type="text" name="like-letter" value="{{ public.letter_id }}" hidden >
-        <input type="submit" id="likes" value="Like">
+        <input type="submit" class="likes" value="Like">
     </form>
 
 {% endfor %}
