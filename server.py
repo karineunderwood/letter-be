@@ -81,7 +81,7 @@ def process_login():
     # if it is store the user's email in session
     if not user or user.password != password:
         flash("The email or password you enter is not valid. Please try again.")
-        return redirect("/")
+        return redirect("/login")
     else:
         session["user_email"] = user.email
         session["user_id"] = user.user_id
