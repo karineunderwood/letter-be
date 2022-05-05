@@ -1,4 +1,3 @@
-from psycopg2 import connect
 import unittest
 import server
 from server import app
@@ -27,9 +26,13 @@ class LetterTests(unittest.TestCase):
         self.assertNotIn(b"Your exciting journey starts here!", result.data )
 
    
+
+        
+
+   
         
 
 
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
