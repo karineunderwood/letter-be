@@ -56,7 +56,10 @@ def get_published_letter():
     return Letter.query.filter(Letter.publish == True).order_by(Letter.letter_id).all()
 
 
+def get_all_letter_by_delivery_date():
+    """Get all letter by delivery date"""
 
+    return Letter.query.filter(Letter.delivery_date == "2022-05-05").all()
 
 
 

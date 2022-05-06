@@ -2,10 +2,16 @@
 
 from flask import (Flask, render_template, request, flash, 
                                         session, redirect)
-import random                  
+import random 
+import schedule
+import time
+from datetime import date 
+
+from threading import Thread
 
 from model import connect_to_db, db
 import crud
+import send_emails
 from jinja2 import StrictUndefined
 import os
 import cloudinary.uploader
@@ -235,19 +241,27 @@ def send_user_profile_pic(photo):
     return result
 
 
-# 
-# 
-# 
-# 
+
+def scheduled_letter_delivery():
+    schedule.every().day.at("20:04").do(send_daily_letters)
+    print("*********************")
+    print("scheduled_letter_delivery")
+    print("************************")
+    while 1:
+        schedule.run_pending()
+        time.sleep(1)
+
+def send_daily_letters():
+    letters = crud.get_all_letter_by_delivery_date(date.today())
+    for letter in letters:
+        send_emails.send_letter_to_user(letter.email, letter.letter_body)
 
 
-
-
-
-    
     
     
 
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
+    # thread = Thread(target = scheduled_letter_delivery())
+    # thread.start()
