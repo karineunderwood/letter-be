@@ -5,9 +5,11 @@
 
 
 <h2>{{ letter.letter_title }}</h2>
-<textarea rows="10" cols="20">{{ letter.letter_body }}</textarea>
+<textarea rows="10" cols="20" id="email-letter-body">{{ letter.letter_body }}</textarea>
 <p>Creation Date: {{ letter.creation_date }}</p>
 <p>Delivery Date: {{ letter.delivery_date }}</p>
 <p>Likes: {{ letter.likes }}</p>
+
+<button type="button" id="email-letter-button"class="btn btn-outline-success">Send Letter</button>
 
 {% endblock %}

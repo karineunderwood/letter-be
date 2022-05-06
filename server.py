@@ -1,13 +1,10 @@
 """Server for letters app."""
 
-from flask import (Flask, render_template, request, flash, 
+from flask import (Flask, jsonify, render_template, request, flash, 
                                         session, redirect)
 import random 
-import schedule
-import time
-from datetime import date 
 
-from threading import Thread
+from datetime import date 
 
 from model import connect_to_db, db
 import crud
@@ -227,6 +224,25 @@ def show_affirmation_quotes():
 
     return random.choice(affirmations)
 
+@app.route("/send_email", methods= ["POST"])
+def send_user_email():
+    """Send user the letter as an email."""
+    letter_body = request.json.get("letterBody")
+    
+    if "user_email" in session:
+        response_code = send_emails.send_letter_to_user(session["user_email"],letter_body)
+    
+        if response_code == 202:
+            return "Your email was successfully sent!"
+        else:
+            return "Unfortunately we are unable to send the email at this time."
+    
+    else:
+        redirect("/")
+    
+ 
+
+
 
 
 #  Helper function for my cloudinary request
@@ -242,14 +258,7 @@ def send_user_profile_pic(photo):
 
 
 
-def scheduled_letter_delivery():
-    schedule.every().day.at("20:04").do(send_daily_letters)
-    print("*********************")
-    print("scheduled_letter_delivery")
-    print("************************")
-    while 1:
-        schedule.run_pending()
-        time.sleep(1)
+
 
 def send_daily_letters():
     letters = crud.get_all_letter_by_delivery_date(date.today())
