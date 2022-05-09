@@ -13,6 +13,7 @@ from jinja2 import StrictUndefined
 import os
 import cloudinary.uploader
 
+
 CLOUDINARY_KEY = os.environ['CLOUDINARY_KEY']
 CLOUDINARY_SECRET = os.environ['CLOUDINARY_SECRET']
 CLOUD_NAME = "dnw3idclo"
@@ -223,6 +224,21 @@ def show_affirmation_quotes():
          ]
 
     return random.choice(affirmations)
+
+@app.route("/random_letter_choice")
+def pick_random_choice_for_letter():
+    """Generate a random option for user to write a letter."""
+
+    choose_title = ["Time-machine", 
+                    "Self-reflection", 
+                    "Reminder to yourself",
+                    "To your next birthday",
+                    "To your future child",
+                    "To your best friend",
+                    "Your Career life in 10 years.",
+                    ]
+
+    return f"The letter you will write today is about: {random.choice(choose_title)}"
 
 @app.route("/send_email", methods= ["POST"])
 def send_user_email():

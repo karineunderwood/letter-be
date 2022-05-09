@@ -1,11 +1,22 @@
 'use strict';
+    
 
 const likeButtonArray = document.querySelectorAll(".likes");
 console.log(likeButtonArray);
 
 for (const likeButton of likeButtonArray) {
     likeButton.addEventListener("click", () => {
-        alert("Thank you for your like!");
+        Toastify({
+            text: "Thank you for your like!",
+            duration: 10000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            stopOnFocus: true,
+            style: {
+                background: "linear-gradient(to right,  #ff5f6d, #ffc371)",
+            }, 
+        }).showToast();
     })
 }
 
@@ -24,6 +35,18 @@ if (quoteBtn) {
         });
     });
 } 
+
+const letterIdeaButton = document.querySelector("#pick-title-button");
+
+if (letterIdeaButton) {
+    letterIdeaButton.addEventListener('click', () => {
+        fetch('/random_letter_choice')
+            .then(response => response.text())
+            .then(letterChoice => {
+                document.querySelector("#choose-title").innerHTML = letterChoice;
+            });
+    });
+}
 
 
 const emailButton = document.querySelector("#email-letter-button");

@@ -1,0 +1,15 @@
+#intro {
+    font-style: italic;
+    font-family:"Lucida Handwriting", cursive;
+    text-align: center;
+    
+}
+
+#home {
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    width: 100%;
+    height: 400px;
+
+}
