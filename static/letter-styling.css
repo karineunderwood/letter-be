@@ -1,3 +1,161 @@
+/* Login Page */
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.login {
+    background-color: linear-gradient(to bottom, #C8D9EB 0%, #fff 100%);
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: left;
+    display:flex;
+    padding: 200px;
+}
+.account-login {
+    width: 500px;
+    
+}
+
+.form-control:focus {
+    box-shadow:none;
+}
+
+.account-login h2 {
+    font-size: 25px;
+    text-align:center;
+    color:#fff;
+    text-transform: uppercase;
+    font-weight:bold;
+    border-radius: 50px;
+}
+
+.login-form input {
+    width: 400px;
+    position:relative;
+    border-bottom: 1px solid #C8D9EB;
+    padding:0;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    box-shadow: none;
+    height: 40px;
+    border-radius: 0px
+
+}
+
+
+
+.login-form {
+    background: #fff;
+    float: left;
+    width: 100%;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+button.btn {
+    width: 100%;
+    background: #009cff;
+    font-size: 20px;
+    padding: 11px;
+    color: #fff;
+    border: 0px;
+    margin: 10px 0px 20px;
+}
+
+/* Register Page */
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.register {
+    background-color: linear-gradient(to bottom, #C8D9EB 0%, #fff 100%);
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: left;
+    display:inline-flex;
+    padding: 100px;
+}
+
+.sign-up {
+    width: 500px;
+    
+}
+
+.sign-up h2 {
+    font-size: 30px;
+    text-align:center;
+    color:#fff;
+    text-transform: uppercase;
+    font-weight:bold;
+    border-radius: 50px;
+}
+
+.signup-form input {
+    width: 400px;
+    position:relative;
+    border-bottom: 1px solid #C8D9EB;
+    padding:0;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    box-shadow: none;
+    height: 40px;
+    border-radius: 0px
+
+}
+
+.signup-form{
+    background: #fff;
+    float: left;
+    width: 100%;
+    height: 450px;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.card {
+    background-color: linear-gradient(to bottom, #C8D9EB 0%, #fff 100%);
+    justify-content:left;
+    margin: 30px;
+    margin-bottom: 10px;
+    align-items:left;
+    display:flex;
+    float:none;
+    padding: 50px;
+     
+}
+
+#user-pic {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    
+
+}
+
+#quote-day {
+    background-color: #C8D9EB;
+    position: absolute;
+    right: 150px;
+    width: 250px;
+    text-align: center;
+}
+
+/* Homepage img */
+
+#home {
+    width: 1024px;
+    height: 400px;
+    image-rendering: pixelated;
+}
+
 #intro {
     font-style: italic;
     font-family:"Lucida Handwriting", cursive;
@@ -5,11 +163,19 @@
     
 }
 
-#home {
-    image-rendering: auto;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
-    width: 100%;
-    height: 400px;
 
+
+#body {
+    background-color:#F0D9DA;
+    
+}
+
+.container-fluid {
+    background-color: #F9ECEC;
+}
+
+.form-group {
+    position: relative;
+    width:100%;
+    height:10em;
 }

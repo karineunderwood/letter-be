@@ -3,11 +3,37 @@
 
 {% block body %}
 
-<h2>{{ user.fname }}</h2><br>
-    <img src="{{ user.photo }}" style="border-radius: 50%;" width="300" height="300"/>
+<div class="card" style="width: 18rem;">
+    
+    <ul class="list-group list-group-flush">
+      <img id="user-pic" src="{{ user.photo }}" />
+      <li class="list-group-item">Name: {{ user.fname }} {{ user.lname }}</li>
+      <li class="list-group-item">Email: {{ user.email }}</li>
+      <li class="list-group-item">My ID: {{ user.user_id }}</li>
+    </ul>
+  </div>
 
-<p>Quote of the Day</p>
+  <div id="quote-day"class="col-6">
+    <p>Quote of the Day</p>
+    <p id="quote"></p> 
+    <button type="button" id="affirmation-button" class="btn btn-outline-primary">Primary</button>
+  </div>
+</div>  
+
+
+<!-- <p>Quote of the Day</p>
 <p id="quote"></p>    
-<button id="affirmation-button">Get a Quote</button>
+<button id="affirmation-button">Get a Quote</button> -->
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}.0.0
