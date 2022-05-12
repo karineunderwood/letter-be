@@ -120,7 +120,7 @@ button.btn {
     border-radius: 5px;
 }
 
-.card {
+#profile-card {
     background-color: linear-gradient(to bottom, #C8D9EB 0%, #fff 100%);
     justify-content:left;
     margin: 30px;
@@ -140,13 +140,21 @@ button.btn {
 
 }
 
-#quote-day {
-    background-color: #C8D9EB;
-    position: absolute;
-    right: 150px;
-    width: 250px;
-    text-align: center;
-}
+#quote-card {
+    background-color: linear-gradient(to bottom, #C8D9EB 0%, #fff 100%);
+    justify-content:right;
+    margin: 30px;
+    margin-bottom: 10px;
+    align-items:right;
+    display:flex;
+    float:right;
+    padding: 50px;
+    position:absolute;
+    top: 60px;
+    right: 10px;
+}  
+     
+
 
 /* Homepage img */
 
