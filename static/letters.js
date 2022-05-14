@@ -22,6 +22,7 @@ for (const likeButton of likeButtonArray) {
 
 
 
+
 const quoteBtn = document.getElementById("affirmation-button");
 console.log('reached here!')
 console.log(quoteBtn);

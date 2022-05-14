@@ -1,10 +1,28 @@
 /* Login Page */
 
+.flash-msg {
+    color:#009cff;
+    font-weight: bold;
+    font-size: larger;
+}
+
+
 * {
     margin: 0px;
     padding: 0px;
+    /* font-family: "Lucida Sans"; */
 }
 
+h1, h2, h3, h4 {
+    font-family: "Palatino", serif;
+}
+
+.navbar {
+    font-family: "Lucida Sans", serif;
+}
+.lead {
+    font-size: x-large;
+}
 .login {
     background-color: linear-gradient(to bottom, #C8D9EB 0%, #fff 100%);
     height: 100vh;
@@ -186,8 +204,6 @@ button.btn {
 }
 
 
-
-
 #email-letter-button {
     height: 50px;
     width: 200px;
@@ -210,12 +226,7 @@ button.btn {
     image-rendering: pixelated;
 }
 
-#intro {
-    font-style: italic;
-    font-family:"Lucida Handwriting", cursive;
-    text-align: center;
-    
-}
+
 
 
 
@@ -234,4 +245,22 @@ button.btn {
     position: relative;
     width:100%;
     height:10em;
+}
+
+.card {
+    margin: 20px;
+    padding: 1rem;
+     
+}
+
+#pubic-btn {
+    background-color:  #0d6efd;
+    border:#009cff;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10%;
 }
