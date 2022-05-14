@@ -2,19 +2,11 @@
 {% block title %}Write A Letter{% endblock %}
 
 {% block body %}
-<div class="container">
+<div id="ideas"class="container">
 
-    <div class="row">
-  
-      <div class="col-12 col-md-3 order-md-2">
-        <h1>Table of Contents</h1>
-  
-        <!-- APPEARS LAST (FARTHEST TO RIGHT) ON MEDIUM SCREENS -->
-  
-      </div>
-  
-      <div class="col-12 col-md-9 order-md-1">
-        <h1>Your exciting journey starts here!</h1>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <h1 class="fw-light">Your exciting journey starts here!</h1>
         <p class="lead">If you are wondering how to start writing your letter. Here are some ideas for you:</p>
         <ol class="list-group list-group-numbered">
             <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -45,74 +37,84 @@
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                  <div class="fw-bold">Subheading</div>
-                  Content for list item
+                  <div class="fw-bold">Talking About Who You Are Know</div>
+                  You can choose an age that puts you in a different circunstances
+                  than you are currently in. When you read the letter you will 
+                  be able to see how much your life has changed and whether or not your
+                  goals have been met.
                 </div>
-                <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">To The Year 2040</div>
+                  Maybe the air you breathe will be cleaner and the Nature will be recovering. 
+                  Saving the climate involves huge change and you can start these changes by
+                  writing down your thoughts and wishes!
+                </div>
               </li>
           </ol>
-        <!-- APPEARS FIRST ON MEDIUM SCREENS -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="letterForm"class="container">
+        <div class="col-4">
+        
+        <form action="/letter" method="POST"> 
+            <div class="mb-3">
+                <h3 class="fw-light">Write Your Letter</h1>
+                <label for="start-letter" class="form-label"></label>
+                <textarea class="form-control" name="letter_body" id="letter_body"rows="5"placeholder="Dear me, "></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="LetterTitle" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title">
+            </div>
+            <div class="mb-3">
+                <label for="creatDate" class="form-label">Creation Date:</label>
+                <input type="date" class="form-control" name="creation-date">
+            </div>
+            <div class="mb-3">
+                <label for="delivDate" class="form-label">Delivery Date:</label>
+                <input type="date" class="form-control" name="delivery-date">
+            </div>
+            <p>Make it public?</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="yes" name="publish" value="YES">
+                <label class="form-check-label" for="yes">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="no" name="publish" value="NO" >
+                <label class="form-check-label" for="no">
+                  No
+                </label>
+              </div>
+              <button type="submit" class="btn btn-outline-primary">Submit</button>
+
+            </form>
+          </div>
+        </div>  
+        
+        <div id="title-card" class="card" style="width: 18rem;">
+            <img src="/static/yellow-bee.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">We can choose an option for you</h5>
+              <p id="choose-title"class="card-text"></p>
+              <button id="pick-title-button"class="btn btn-primary">Surprise Me</a>
+            </div>
+          </div>
+              
+        
   
       </div>
-  
-    </div>
-  
-  </div>
 
 
-
-
-
-
-  <h1>Your exciting journey starts here!</h1>
-
-  <h2>If you are wondering how to start writing your letter, we have some ideas for you:</h2>
-    <h3>Remind Yourself That The Little Things Matter</h3>
-    <cite>We are always worried about the big events in your lives, 
-            but what about a cup of coffee in the mornings, the smell of a new book,
-            or a small talk with your neighbor? These things will be nice to remember
-            when you receive the letter in the future. </cite>
-  
-    <h3>Next Birthday</h3>
-    <cite>Birthdays are so special. They remind us that we are growing older, although they 
-        symbolize how far we have come. They give everyone a day to feel special. 
-        and putting your wishes within a letter it is a nice to way to gift someone or yourself. </cite>
-    <h3>To Your Future Grandchild</h3>  
-    <cite>Tell them how the world looks like now and share your thoughts and advice about 
-          climate change in our lifetimes. </cite>
-    <br><br>
-
-    <p>Need ideas?</p>
-    <p id="choose-title"></p>    
-    <button id="pick-title-button">Surprise Me</button>
-    <br><br>
     
-  <form action="/letter" method="POST">
-      <p>
-          <label for="start-letter"><b>Write your letter:</b></label>
-          <br>
-          <br>
-          <textarea name="letter_body" id="letter_body" rows="20" cols="50"></textarea>
-      </p>
-          Title <input type="text" name="title">
-      </p>
-      <p>
-          Creation Date <input type="date" name="creation-date">
-      </p>
-      <p>
-          Delivery Date <input type="date" name="delivery-date">
-      </p>
-      <p>
-          Publish the letter 
-      </p>
-        <input type="radio" id="yes" name="publish" value="YES">
-        <label for="yes">Yes</label>
-        <input type="radio" id="no" name="publish" value="NO">
-        <label for="no">No</label>
-      <p>
-          <input type="submit">
-      </p>
-  </form>
+    
+  
 
 
   {% endblock %}

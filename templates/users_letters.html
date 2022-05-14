@@ -2,13 +2,76 @@
 {% block title %} Letters {% endblock %}
 
 {% block body %}
+<div class="container">
+    <div class="row">
+{% for letter in letters %}
+<div class="card" style="width: 18rem;">
+    <img src="/static/letterw-flower.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ letter.letter_title }}</h5>
+      <a href="/letters/{{letter.letter_id}}" class="btn btn-primary">Read Letter</a>
+    </div>
+  </div>
+{% endfor %}
+</div>
+</div>
 
-<h1>These are all the letters that you have written so far:</h1>
+
+
+
+  <!-- <h1 class="fw-light">Click on the link below to read your past letters</h1>
+  {% for letter in letters %}
+        <div id="past-letters">
+        <a href="/letters/{{letter.letter_id}}"  class="link-dark">{{ letter.letter_title }}</a>
+  {% endfor %}   
+        </div>
+</div> -->
+
+
+
+
+
+<!-- <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12  text-center">
+        <h1 class="fw-light">Past Letters</h1>
 
 {% for letter in letters %}
-
-    <li><a href="/letters/{{letter.letter_id}}">{{ letter.letter_title }}</a></li> <br>
-
+        <div id="past-letters">
+        <a href="/letters/{{letter.letter_id}}"  class="link-dark">{{ letter.letter_title }}</a>
+     </div>
+    </div>
+  </div>
+</div>
 {% endfor %}
+ -->
+
+
+
+<!-- {% for letter in letters %}
+<div class="container">
+    <div class="col-12">
+<div id="past-letters">
+    <a href="/letters/{{letter.letter_id}}"  class="link-dark">{{ letter.letter_title }}</a>
+
+</div>
+
+
+
+
+<div id="past-letters" class="list-group">
+    <a href="/letters/{{letter.letter_id}}" class="list-group-item list-group-item-action active" aria-current="true">
+        {{ letter.letter_title }}
+    </a>
+    
+  </div>
+
+
+
+ -->
+
+
+
+<!-- {% endfor %} -->
 
 {% endblock %}

@@ -2,14 +2,23 @@
 {% block title %}Here it is your letter.{% endblock %}
 
 {% block body %}
+<div id="single-letter" class="container">
+    <div class="col-12">
+<div class="card w-75">
+    <img src="/static/bee.jpg"  class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ letter.letter_title }}</h5>
+      <p class="card-text"id="email-letter-body">{{ letter.letter_body }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Creation Date: {{ letter.creation_date }}</li>
+      <li class="list-group-item">Delivery Date: {{ letter.delivery_date }}</li>
+      <li class="list-group-item">Likes: {{ letter.likes }}</li>
+      <button type="button" id="email-letter-button"class="btn btn-outline-success">Send Letter</button>
+    </ul>
+    </div>
+  </div>
 
 
-<h2>{{ letter.letter_title }}</h2>
-<textarea rows="10" cols="20" id="email-letter-body">{{ letter.letter_body }}</textarea>
-<p>Creation Date: {{ letter.creation_date }}</p>
-<p>Delivery Date: {{ letter.delivery_date }}</p>
-<p>Likes: {{ letter.likes }}</p>
-
-<button type="button" id="email-letter-button"class="btn btn-outline-success">Send Letter</button>
 
 {% endblock %}

@@ -247,7 +247,9 @@ def send_user_email():
     
     if "user_email" in session:
         response_code = send_emails.send_letter_to_user(session["user_email"],letter_body)
-    
+        print("*****************************")
+        print(response_code)
+        print("******************************")
         if response_code == 202:
             return "Your email was successfully sent!"
         else:

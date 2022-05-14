@@ -57,8 +57,10 @@ if (emailButton) {
         console.log("Clicked email button!");
         
         const formInputs = {
-            letterBody: document.querySelector("#email-letter-body").value
+            letterBody: document.querySelector("#email-letter-body").innerText
         };
+
+        console.log('formInputs: ', formInputs);
 
         fetch('/send_email', {
             method: 'POST',
