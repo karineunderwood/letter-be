@@ -81,8 +81,7 @@ def process_login():
     password = request.form.get("password")
 
     user = crud.get_user_by_email(email)
-    # check if email and password are correct
-    # if it is store the user's email in session
+    
     if not user or user.password != password:
         flash("The email or password you enter is not valid. Please try again.")
         return redirect("/login")
@@ -117,7 +116,7 @@ def create_a_letter():
     """Create a letter."""
 
     logged_in_email = session.get("user_email")
-    user = crud.get_user_by_email(logged_in_email) #getting user object by email
+    user = crud.get_user_by_email(logged_in_email) 
 
     letter_body = request.form.get("letter_body")
     letter_title = request.form.get("title")
@@ -138,14 +137,14 @@ def create_a_letter():
         
     else:
         user_letter = crud.create_letter_for_user(
-                        letter_title=letter_title,  #left side is parameter name, right side is variable from line 82
+                        letter_title=letter_title,  
                         letter_body=letter_body, 
                         creation_date=creation_date, 
                         delivery_date=delivery_date, 
                         likes=0, 
                         read=False, 
                         publish=publish, 
-                        user_id=user.user_id)  #user is the user object from line 79, user_id is a column in your users table
+                        user_id=user.user_id)  
                        
         
         db.session.add(user_letter)
@@ -179,8 +178,8 @@ def add_like():
     liked_letter_id = request.form.get("like-letter")
     
 
-    liked_letter = crud.get_letter_by_id(liked_letter_id) #get letter object by letter id
-    liked_letter.likes = liked_letter.likes + 1 #updating the likes column for that letter object to add 1
+    liked_letter = crud.get_letter_by_id(liked_letter_id) 
+    liked_letter.likes = liked_letter.likes + 1 
 
     db.session.commit()
 
@@ -247,9 +246,7 @@ def send_user_email():
     
     if "user_email" in session:
         response_code = send_emails.send_letter_to_user(session["user_email"],letter_body)
-        print("*****************************")
-        print(response_code)
-        print("******************************")
+        
         if response_code == 202:
             return "Your email was successfully sent!"
         else:
@@ -263,7 +260,7 @@ def send_user_email():
 
 
 
-#  Helper function for my cloudinary request
+"""Helper function for my cloudinary request"""
 
 def send_user_profile_pic(photo):
     """Process form data."""
@@ -290,5 +287,4 @@ def send_daily_letters():
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
-    # thread = Thread(target = scheduled_letter_delivery())
-    # thread.start()
+    
