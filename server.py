@@ -263,7 +263,7 @@ def send_user_email():
 
 
 
-"""Helper function for my cloudinary request"""
+"""Helper function for my cloudinary request."""
 
 def send_user_profile_pic(photo):
     """Process form data."""
