@@ -219,7 +219,9 @@ def show_affirmation_quotes():
         "There is no path to happiness; Happiness is the path. - Buddha",
         "Happiness is a warm puppy. - Charles M. Schulz",
         "You are loved just for being who you are, just for existing. -Ram Dass",
-        "the perfect moment is this one. - Jon Kabat-Zinn"
+        "The perfect moment is this one. - Jon Kabat-Zinn",
+        "All our dreams can come true, if we have the courage to pursue them. - Walt Disney",
+        "I people are doubting how far you can go, go so far that you can't hear them anymore. - Michele Ruiz"
          ]
 
     return random.choice(affirmations)
@@ -231,10 +233,11 @@ def pick_random_choice_for_letter():
     choose_title = ["Time-machine", 
                     "Self-reflection", 
                     "Reminder to yourself",
-                    "To your next birthday",
-                    "To your future child",
-                    "To your best friend",
+                    "Your next birthday",
+                    "Your future child",
+                    "Your best friend",
                     "Your Career life in 10 years.",
+                    "To your partner/spouse, on your 20th anniversary."
                     ]
 
     return f"The letter you will write today is about: {random.choice(choose_title)}"
