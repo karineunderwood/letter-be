@@ -27,24 +27,30 @@ Letter Be was created by Karine Underwood
 
 ## Features
 
-![Sign Up ](/static/README-img/signup.png)
 Users can easily sign up and upload a picture for their profile.
 
-![Log In ](/static/README-img/login.jpg)
+![Sign Up ](/static/README-img/signup.png)
+
 
 After sign up users are able to log in in their profile.
 
-![Profile Page](/static/README-img/profileReadMe.jpg)
+![Log In ](/static/README-img/login.jpg)
+
 
 After  log in the user is redicted to their profile page and can see their name, email and user id. Also they can get a daily quote by clicking the button that says "Get a Quote".
 
-![Letter Ideas](/static/README-img/letter_ideas.jpg)
+![Profile Page](/static/README-img/profileReadMe.jpg)
+
 
 Letter Be provides to the user some ideas to start the letter and if the user is still not sure on what to write, they can click the button "Surprise Me" and Letter Be will generate a subject for them to start writing. 
 
-![Write a Letter](/static/README-img/letter_form.jpg)
+![Letter Ideas](/static/README-img/letter_ideas.jpg)
+
 
 When the users are ready to move on and write a letter they simply scroll down the page and will find a form. The user will fill out the following boxes:
+
+![Write a Letter](/static/README-img/letter_form.jpg)
+
 
 - The letter body
 - Letter title
@@ -54,11 +60,16 @@ When the users are ready to move on and write a letter they simply scroll down t
 
 After that, just click on Submit!
 
-![Past Letters](/static/README-img/user_personal_letter.jpg)
+
 Users can check their past letters by clicking on the button that says Read Letter.
 
-![Public Letters](/static/README-img/read_public.jpg)
+![Past Letters](/static/README-img/user_personal_letter.jpg)
+
 Another interesting thing that Letter Be provides to the user experience is that the users can read letters from other user. If they choose the option make it public when they are creating the letter they can click on Public Letters and read past letters. 
+
+
+![Public Letters](/static/README-img/read_public.jpg)
+
 
 ## Setup/Installation
 #### Requirements:
