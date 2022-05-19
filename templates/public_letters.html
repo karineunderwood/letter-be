@@ -3,52 +3,43 @@
 
 {% block body %}
 
-
-
-
-<div class="container">
-    <div class="row">
-        <!-- <div class="col-sm-6"> -->
 {% for public in published %}
-<div class="card" style="width: 18rem;" >
-    <img src="/static/letter-envelope.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Title: {{ public.letter_title }}</h5>
-      <p class="card-text">{{ public.letter_body }}</p>
-      <p class="card-text">Creation Date: {{ public.creation_date }}</p>
-      <p class="card-text">
-        <i class="bi bi-heart-fill"></i><span id="diplay">  {{ public.likes }}</span>
-      </p>
-      <form action="/add_like" method="POST" id="like-form-{{ public.letter_id }}">
-        <input type="text" name="like-letter" value="{{ public.letter_id }}" hidden >
-        <button id="pubic-btn"type="submit" class="likes" value="Like">Like</button>
-      </form>
-    </div>
-  </div>
+<div class="container mt-5 mb-5">
+  <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-md-6">
+          <div class="card">
+              <div class="d-flex justify-content-between p-2 px-3">
+                  <div class="d-flex flex-row align-items-center"> 
+                      <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"> Title: {{ public.letter_title }}</span></div>
+                  </div>
+                  
+              </div> <img src="/static/letter-envelope.jpg" class="img-fluid">
+              <div class="p-2">
+                  <p class="text-justify">{{ public.letter_body }}</p>
+                  <hr>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <p class="card-text">
+                      <i class="bi bi-heart-fill"></i><span id="diplay">  {{ public.likes }}</span>
+                    </p>
+                  </div>
+                  <form action="/add_like" method="POST" id="like-form-{{ public.letter_id }}">
+                    <input type="text" name="like-letter" value="{{ public.letter_id }}" hidden >
+                    <button id="public-btn"type="submit" class="likes" value="Like">Like</button>
+                  </form>
+                  <hr>
+                  
+                  </div>
+              </div>
+          </div>
   {% endfor %}
+      </div>
   </div>
 </div>
-</div>
-<!-- <h1> All public letters </h1>
 
-{% for public in published %}
-<br>
 
-    <p>Title: {{ public.letter_title }} </p>
-    <cite>{{ public.letter_body }}</cite>
-    <br>
-    <br>
-    <p>Creation Date: {{ public.creation_date }}</p>
-    <p>
-        Likes: <span id="diplay">{{ public.likes }}</span>
-    </p>
-    <form action="/add_like" method="POST" id="like-form-{{ public.letter_id }}">
-        <input type="text" name="like-letter" value="{{ public.letter_id }}" hidden >
-        <input type="submit" class="likes" value="Like">
-    </form>
 
-{% endfor %}
- -->
+
+
 
 
 {% endblock %}

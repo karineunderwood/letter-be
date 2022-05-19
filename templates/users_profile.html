@@ -3,28 +3,33 @@
 
 {% block body %}
 
-<div id="profile-card" class="card" style="width: 18rem;">
-    
-    <ul class="list-group list-group-flush">
-      <img id="user-pic" src="{{ user.photo }}" />
-      <li class="list-group-item">Name: {{ user.fname }} {{ user.lname }}</li>
-      <li class="list-group-item">Email: {{ user.email }}</li>
-      <li class="list-group-item">My ID: {{ user.user_id }}</li>
-    </ul>
-  </div>
 
 
-  <div id="quote-card" class="card" style="width: 18rem;">
-    <img src="/static/quote-pic.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Daily Quote</h5>
-      <p id="quote"class="card-text"></p>
-      <button type="button" id="affirmation-button"class="btn btn-primary">Get a Quote</a>
-    </div>
-  </div>
+  <div class="container mt-5 mb-5">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="d-flex justify-content-between p-2 px-3">
+                    <div class="d-flex flex-row align-items-center"> 
+                        <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"> Personal Information </span></div>
+                    </div>
+                    
+                </div> <img src="{{ user.photo }}" class="img-fluid">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Name: {{ user.fname }} {{ user.lname }}</li>
+                        <li class="list-group-item">Email: {{ user.email }}</li>
+                        <li class="list-group-item">My ID: {{ user.user_id }}</li><br>
+                        <p id="quote"></p>
+                        <button type="button" id="affirmation-button"class="btn btn-primary">Get Daily Quote</button>
+                      </ul>
+                    <hr>
+                    
+                    </div>
+                </div>
+            </div>
 
-
-
+  
   
 
 

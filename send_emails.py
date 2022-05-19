@@ -24,7 +24,7 @@ def send_letter_to_user(email, letter_body):
     print("response: ", response)
     print("response.status_code: ", response.status_code)
     return response.status_code
-    # print(response.headers)
+    
 
 
 

@@ -166,6 +166,7 @@ def display_all_public_letters():
     """Display all published letters."""
 
     published = crud.get_published_letter()
+    
 
 
     return render_template("public_letters.html", published=published)
@@ -249,7 +250,13 @@ def send_user_email():
     
     if "user_email" in session:
         response_code = send_emails.send_letter_to_user(session["user_email"],letter_body)
-        
+        print("************************")
+        print("************************")
+        print("************************")
+        print(response_code)
+        print("************************")
+        print("************************")
+        print("************************")
         if response_code == 202:
             return "Your email was successfully sent!"
         else:

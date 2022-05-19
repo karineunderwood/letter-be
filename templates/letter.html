@@ -2,22 +2,55 @@
 {% block title %}Here it is your letter.{% endblock %}
 
 {% block body %}
-<div id="single-letter" class="container">
-    <div class="col-12">
-<div class="card mb-3">
-    <img src="/static/bee.jpg"  class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{ letter.letter_title }}</h5>
-      <p class="card-text"id="email-letter-body">{{ letter.letter_body }}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Creation Date: {{ letter.creation_date }}</li>
-      <li class="list-group-item">Delivery Date: {{ letter.delivery_date }}</li>
-      <li class="list-group-item">Likes: {{ letter.likes }}</li>
-      <button type="button" id="email-letter-button"class="btn btn-outline-success">Send Letter</button>
-    </ul>
-    </div>
-  </div>
+
+<div class="container mt-5 mb-5">
+  <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-md-6">
+          <div class="card">
+              <div class="d-flex justify-content-between p-2 px-3">
+                  <div class="d-flex flex-row align-items-center"> 
+                      <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"> Title: {{ letter.letter_title }}</span></div>
+                  </div>
+                  
+              </div> <img src="/static/bee.jpg" class="img-fluid">
+              <div class="p-2">
+                  <p class="text-justify" id="email-letter-body">{{ letter.letter_body }}</p>
+                  <hr>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Creation Date: {{ letter.creation_date }}</li>
+                      <li class="list-group-item">Delivery Date: {{ letter.delivery_date }}</li>
+                      <li class="list-group-item">Likes: {{ letter.likes }}</li>
+                      <button type="button" id="email-letter-button"class="btn btn-outline-success">Send Letter</button>
+                    </ul>
+                  <hr>
+                  
+                  </div>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

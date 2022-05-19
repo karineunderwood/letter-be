@@ -2,8 +2,9 @@
 
 .flash-msg {
     color:#009cff;
-    font-weight: bold;
+    font-weight:normal;
     font-size: larger;
+    font-family: Georgia, serif;
 }
 
 
@@ -14,7 +15,7 @@
 }
 
 h1, h2, h3, h4 {
-    font-family: "Palatino", serif;
+    font-family: Georgia, serif;
 }
 
 .navbar {
@@ -233,8 +234,11 @@ button.btn {
 
 #body {
     background-color:#F0D9DA;
+    font-family: "Raleway", sans-serif;    
+}
 
-    
+.font-weight-bold {
+    font-weight: bold;
 }
 
 .container-fluid {
@@ -253,11 +257,11 @@ button.btn {
      
 }
 
-#pubic-btn {
+#public-btn {
     background-color:  #0d6efd;
     border:#009cff;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
