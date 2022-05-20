@@ -3,8 +3,9 @@
 .flash-msg {
     color:#009cff;
     font-weight:normal;
-    font-size: larger;
+    font-size:x-large;
     font-family: Georgia, serif;
+    
 }
 
 
@@ -141,39 +142,8 @@ button.btn {
     border-radius: 5px;
 }
 
-#profile-card {
-    background-color: linear-gradient(to bottom, #C8D9EB 0%, #fff 100%);
-    justify-content:left;
-    margin: 30px;
-    margin-bottom: 10px;
-    align-items:left;
-    display:flex;
-    float:none;
-    padding: 50px;
-     
-}
 
-#user-pic {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    
 
-}
-
-#quote-card {
-    background-color: linear-gradient(to bottom, #C8D9EB 0%, #fff 100%);
-    justify-content:right;
-    margin: 30px;
-    margin-bottom: 10px;
-    align-items:right;
-    display:flex;
-    float:right;
-    padding: 50px;
-    position:absolute;
-    top: 60px;
-    right: 10px;
-}  
 
 /* Letter Form */
 
@@ -222,9 +192,10 @@ button.btn {
 /* Homepage img */
 
 #home {
-    width: 1024px;
-    height: 400px;
-    image-rendering: pixelated;
+    width: max-content;
+    height: 500px;
+    
+    
 }
 
 

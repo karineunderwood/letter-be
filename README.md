@@ -39,7 +39,7 @@ After sign up users are able to log in in their profile.
 
 After  log in the user is redicted to their profile page and can see their name, email and user id. Also they can get a daily quote by clicking the button that says "Get a Quote".
 
-![Profile Page](/static/README-img/profileReadMe.jpg)
+![Profile Page](/static/README-img/user_profile_page.jpg)
 
 
 Letter Be provides to the user some ideas to start the letter and if the user is still not sure on what to write, they can click the button "Surprise Me" and Letter Be will generate a subject for them to start writing. 
